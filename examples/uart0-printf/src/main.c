@@ -43,7 +43,7 @@ int main() {
   ringbufferInit(&txBuffer, 64);
 
   GPIOB_SetBits(GPIO_Pin_7);
-  GPIOB_ModeCfg(GPIO_Pin_7, GPIO_ModeOut_PP_5mA); // UART1 TX
+  GPIOB_ModeCfg(GPIO_Pin_7, GPIO_ModeOut_PP_5mA); // UART0 TX
   UART0_DefInit();
   UART0_ByteTrigCfg(UART_7BYTE_TRIG);
   UART0_INTCfg(ENABLE, RB_IER_THR_EMPTY);

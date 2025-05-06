@@ -1,7 +1,7 @@
-@aguegu/ch581
+@aguegu/ch571
 ===
 
-**Firmware Development Environment for CH571/CH572/CH573 on Linux**
+**Firmware Development Environment for [WCH](https://www.wch.cn/) CH571/CH572/CH573 on Linux**
 
 >  **Non-Commercial License**: This project is free to use for educational and personal purposes. Commercial use is **not permitted** without explicit written permission. See the `LICENSE` file for details.
 

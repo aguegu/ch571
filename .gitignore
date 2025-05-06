@@ -1,0 +1,6 @@
+tools/
+EVT/
+RISC-V Embedded */
+riscv-embedded-gcc
+WCHISPTool_CMD
+dist/

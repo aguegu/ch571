@@ -1,6 +1,8 @@
 BIN     = ../../riscv-embedded-gcc/bin
 BIN_PREFIX = riscv-wch-elf
 
+CHIP_INI = ../ch573.ini
+
 CFLAGS 	= -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fmax-errors=20 -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -g
 DEFINES =
 
@@ -74,6 +76,6 @@ $(TARGET).lst: $(TARGET).elf
 	$(BIN)/$(BIN_PREFIX)-objdump --source --all-headers --demangle --line-numbers --wide $^ > $@
 
 flash: $(TARGET).hex
-	sudo ../../WCHISPTool_CMD -p /dev/ch37x0 -c ../ch57x.ini -o program -f $<
+	sudo ../../WCHISPTool_CMD -p /dev/ch37x0 -c $(CHIP_INI) -o program -f $<
 
 .PHONY: version clean flash lint

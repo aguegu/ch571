@@ -1,19 +1,19 @@
 BIN     = ../../riscv-embedded-gcc/bin
 BIN_PREFIX = riscv-wch-elf
 
-# CHIP_INI = ../ch571.ini
 CHIP_INI = ../ch573.ini
 
 CFLAGS 	= -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fmax-errors=20 -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -g
-DEFINES = -DDEBUG=1
+DEFINES =
 
-LINTER = clang-format --style=Google -i
+LINTER = clang-format --style=LLVM -i
 
 OUTPUT_DIR = ./dist
 
 TARGET     = $(addprefix $(OUTPUT_DIR)/, $(notdir $(CURDIR)))
 
 Project_ROOT    = .
+Project_INC_DIR = $(Project_ROOT)/inc
 Project_SRC_DIR = $(Project_ROOT)/src
 Project_SOURCES = $(notdir $(wildcard $(Project_SRC_DIR)/*.c))
 Project_OBJECTS = $(addprefix $(OUTPUT_DIR)/, $(Project_SOURCES:.c=.o))
@@ -25,7 +25,7 @@ RVMSIS_OBJECTS  = $(addprefix $(OUTPUT_DIR)/, $(RVMSIS_SOURCES:.c=.o))
 StdPeriphDriver_ROOT    = ../../EVT/EXAM/SRC/StdPeriphDriver
 StdPeriphDriver_INC_DIR = $(StdPeriphDriver_ROOT)/inc
 StdPeriphDriver_SRC_DIR = $(StdPeriphDriver_ROOT)
-StdPeriphDriver_SOURCES  = CH57x_sys.c CH57x_gpio.c
+StdPeriphDriver_SOURCES  = CH57x_sys.c CH57x_gpio.c CH57x_uart1.c CH57x_spi0.c
 StdPeriphDriver_OBJECTS = $(addprefix $(OUTPUT_DIR)/, $(StdPeriphDriver_SOURCES:.c=.o))
 
 Startup_ROOT		= ../../EVT/EXAM/SRC/Startup
@@ -34,7 +34,7 @@ Startup_OBJECTS = $(addprefix $(OUTPUT_DIR)/asm/, $(Startup_SOURCES:.S=.o))
 
 LINK_FILE = ../../EVT/EXAM/SRC/Ld/Link.ld
 
-INCLUDES = -I $(StdPeriphDriver_INC_DIR) -I $(RVMSIS_ROOT)
+INCLUDES = -I $(Project_INC_DIR) -I $(StdPeriphDriver_INC_DIR) -I $(RVMSIS_ROOT)
 
 VPATH = $(Project_SRC_DIR):$(StdPeriphDriver_SRC_DIR):$(Startup_ROOT):$(RVMSIS_ROOT)
 

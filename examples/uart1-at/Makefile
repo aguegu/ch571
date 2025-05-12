@@ -2,6 +2,7 @@ BIN     = ../../riscv-embedded-gcc/bin
 BIN_PREFIX = riscv-wch-elf
 
 CHIP_INI = ../ch573.ini
+# CHIP_INI = ../ch571.ini
 
 CFLAGS 	= -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fmax-errors=20 -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -g
 DEFINES =
